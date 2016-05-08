@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="mobileTest.css">
+	</head>
+
+	<body>
+
+		<div id="scroll"><div id="posted"><h2>Let AJAX change this text</h2></div></div>
+
+		<div id="button" onclick="loadDoc()">Change Content</div>
+
+
+		<script>
+		function loadDoc() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		      document.getElementById("posted").innerHTML = xhttp.responseText;
+		    }
+		  };
+		  xhttp.open("POST", "http://jaymartmedia.com/php/tomobileapp.php", true);
+		  xhttp.send();
+		}
+		//setInterval(loadDoc, 5000);
+		</script>
+	</body>
+</html>

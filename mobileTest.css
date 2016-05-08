@@ -1,0 +1,29 @@
+*, *:before, *:after{
+	box-sizing:border-box;
+}
+body{
+	background: grey;
+}
+#scroll{
+	background:white;
+	border-radius: 3px;
+	width:96vw;
+	position:absolute;
+	left:2vw;
+	top:1vh;
+	height:83vh;
+	overflow:auto;
+}
+#button{
+	background:white;
+	border-radius: 3px;
+	font-size:5vh;
+	text-align:center;
+	width:80vw;
+	height:7vh;
+	padding-top:1vh;
+	position:fixed;
+	bottom:2vh;
+	left:10vw;
+	border:1px solid black;
+}
