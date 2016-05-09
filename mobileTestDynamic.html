@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="mobileTest.css">
+	</head>
+
+	<body>
+
+		<div id="scroll">
+
+			<div class="item">
+				Hello this is value;
+			</div>
+
+		</div>
+		<form action='#'>
+			<input type="text" id="IDnum" title="Numbers only please, up to three digits in length." pattern="[0-9]{1,3}"></input>
+			<input type="submit" id="button" onclick="loadDoc()">
+		</form>
+
+
+
+		<script>
+		var toBeRetrieved = Number(document.getElementById('IDnum').value);
+
+		function loadDoc() {
+		toBeRetrieved = Number(document.getElementById('IDnum').value);
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		      var fromPHP = xhttp.responseText;
+		      postPHP(fromPHP);
+		    }
+		  };
+		  xhttp.open("POST", "http://jaymartmedia.com/php/mysqlrequest.php?ID="+toBeRetrieved, true);
+		  xhttp.send();
+		}
+
+		function postPHP(param){
+
+			var obj = JSON.parse(param);
+			if((obj.VALUE != null)||(obj.VALUE != undefined)){
+				alert(obj.VALUE)
+				//document.getElementById('scroll').innerHTML = '<div class="item">'+obj.VALUE+'</div>';
+				document.getElementById('scroll').innerHTML = '<div class="item">'+obj.VALUE+'</div>'+document.getElementById('scroll').innerHTML;
+			}
+			//alert(param);
+			//document.getElementById('posted').textContent = param;
+		}
+		//setInterval(loadDoc, 5000);
+		</script>
+	</body>
+</html>
